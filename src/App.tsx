@@ -141,7 +141,7 @@ function App() {
   //取得固定已知的 csv 欄位
   useEffect(() => {
     if(!allowColumns){
-      fetch('/public/columns.json')
+      fetch(`${import.meta.env.BASE_URL}columns.json`)
       .then(response => response.json())
       .then(data => {
         console.log(data);
