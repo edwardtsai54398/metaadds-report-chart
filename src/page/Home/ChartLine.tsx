@@ -28,7 +28,7 @@ function ChartLine({config = {}, data}: ChartLineProps) {
     const metricObj = allowColumns?.find(c => c.key === metricKey) as Column
     return metricObj.label
   }
-  const calcYAxisTicksDomain = ([dataMin, dataMax]):[number, number] => {
+  const calcYAxisTicksDomain = ([dataMin , dataMax]: [number, number]):[number, number] => {
     if(typeof dataMin !== 'number' || typeof dataMax !== 'number'){
       throw new Error(`calcYAxisTicksDomain: dataMin is not a number, or dataMax is not a number.`)
     }

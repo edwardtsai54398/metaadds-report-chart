@@ -2,12 +2,12 @@ import {useState} from 'react'
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import CateLabel from '@/components/ui/CateLabel'
-import type {ModeSelectorProps, ModeValue} from '@/type/ModeSelectorType'
+import type { ModeValue } from '@/type/ModeSelectorType'
 
-function ModeSelector({onValueChange}:ModeSelectorProps) {
+function ModeSelector() {
   const [value, setValue] = useState<ModeValue>('multi-metric@one-ad')
   const handleValueChange = (val:ModeValue) => {
-    onValueChange(val)
+    // onValueChange(val)
     setValue(val)
   }
   return(

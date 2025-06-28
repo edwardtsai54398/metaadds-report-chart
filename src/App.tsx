@@ -118,18 +118,6 @@ const getROASSum: GetMetricSumFunc = (allDataMap, adName, metricKey = 'ROAS', da
   return (totalIncome / totalCost) * 100
 }
 
-const isMetricColumn = (obj: Record<string, string | boolean | object>) => {
-  return (
-    typeof obj === 'object' &&
-    typeof obj.fileStr === 'string' &&
-    typeof obj.label === 'string' &&
-    typeof obj.key === 'string' &&
-    (obj.type === 'string' || obj.type === 'number') &&
-    typeof obj.type === 'string' &&
-    typeof obj.isFunction === 'boolean' &&
-    typeof obj.isMetric === 'boolean' 
-  )
-}
 
 function App() {
   //總資料
@@ -160,12 +148,10 @@ function App() {
         setAllowColumns(data.columns)
         //建立需要計算的指標的 function
         const metricCalcMap = new Map<string, GetFunctionMetricSumFunc>()
-        data.columns.forEach(col => {
-          if(!isMetricColumn(col)) return
-          const column = col as Column
-          if(!column.isMetric) return
-          if(column.isFunction && column.function?.args && column.function?.return){
-            metricCalcMap.set(column.key, generateMetricCalcFunc(column.function.args, column.function.return))
+        ;(data.columns as Column[]).forEach(col => {
+          if(!col.isMetric) return
+          if(col.isFunction && col.function?.args && col.function?.return){
+            metricCalcMap.set(col.key, generateMetricCalcFunc(col.function.args, col.function.return))
           }
 
         })
