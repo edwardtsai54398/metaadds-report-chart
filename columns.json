@@ -1,0 +1,253 @@
+{
+  "columns": [
+    {
+      "fileStr": "分析報告開始",
+      "label": "分析報告開始",
+      "key": "START_DATE",
+      "type": "string",
+      "unit": "string",
+      "isFunction": false,
+      "isMetric": false,
+      "function": null
+    },
+    {
+      "fileStr": "分析報告結束",
+      "label": "分析報告結束",
+      "key": "END_DATE",
+      "type": "string",
+      "unit": "string",
+      "isFunction": false,
+      "isMetric": false,
+      "function": null
+    },
+    {
+      "fileStr": "廣告名稱",
+      "label": "廣告名稱",
+      "key": "AD_NAME",
+      "type": "string",
+      "unit": "string",
+      "isFunction": false,
+      "isMetric": false,
+      "function": null
+    },
+    {
+      "fileStr": "年齡",
+      "label": "年齡",
+      "key": "AGE",
+      "type": "string",
+      "unit": "string",
+      "isFunction": false,
+      "isMetric": false,
+      "function": null
+    },
+    {
+      "fileStr": "廣告組合名稱",
+      "label": "廣告組合名稱",
+      "key": "AD_COMBINATION_NAME",
+      "type": "string",
+      "unit": "string",
+      "isFunction": false,
+      "isMetric": false,
+      "function": null
+    },
+    {
+      "fileStr": "行銷活動名稱",
+      "label": "行銷活動名稱",
+      "key": "MARKETING_ACTIVITY_NAME",
+      "type": "string",
+      "unit": "string",
+      "isFunction": false,
+      "isMetric": false,
+      "function": null
+    },
+    {
+      "fileStr": "觸及人數",
+      "label": "觸及人數",
+      "key": "REACHED_PEOPLE",
+      "type": "number",
+      "unit": "int",
+      "isFunction": false,
+      "isMetric": true,
+      "function": null
+    },
+    {
+      "fileStr": "曝光次數",
+      "label": "曝光次數",
+      "key": "IMPRESSION",
+      "type": "number",
+      "unit": "int",
+      "isFunction": false,
+      "isMetric": true,
+      "function": null
+    },
+    {
+      "fileStr": "花費金額 (TWD)",
+      "label": "花費金額",
+      "key": "TOTAL_COST",
+      "type": "number",
+      "unit": "TWD",
+      "isFunction": false,
+      "isMetric": true,
+      "function": null
+    },
+    {
+      "fileStr": "CTR（連結點閱率）",
+      "label": "連結點閱率 (CTR)",
+      "key": "CTR",
+      "type": "number",
+      "unit": "percent",
+      "isFunction": true,
+      "isMetric": true,
+      "function": {
+        "args": [
+          "IMPRESSION",
+          "CLICK_COUNT"
+        ],
+        "return": "((CLICK_COUNT / IMPRESSION) * 100)"
+      }
+    },
+    {
+      "fileStr": "CPM（每千次廣告曝光成本） (TWD)",
+      "label": "每千次廣告曝光成本 (CPM)",
+      "key": "CPM",
+      "type": "number",
+      "unit": "TWD",
+      "isFunction": true,
+      "isMetric": true,
+      "function": {
+        "args": [
+          "IMPRESSION",
+          "TOTAL_COST"
+        ],
+        "return": "((TOTAL_COST / IMPRESSION) * 1000)"
+      }
+    },
+    {
+      "fileStr": "CPC（單次連結點擊成本） (TWD)",
+      "label": "單次連結點擊成本 (CPC)",
+      "key": "CPC",
+      "type": "number",
+      "unit": "TWD",
+      "isFunction": true,
+      "isMetric": true,
+      "function": {
+        "args": [
+          "TOTAL_COST",
+          "CLICK_COUNT"
+        ],
+        "return": "(TOTAL_COST / CLICK_COUNT)"
+      }
+    },
+    {
+      "fileStr": "連結點擊次數",
+      "label": "連結點擊次數",
+      "key": "CLICK_COUNT",
+      "type": "number",
+      "unit": "int",
+      "isFunction": false,
+      "isMetric": true,
+      "function": null
+    },
+    {
+      "fileStr": "加到購物車次數",
+      "label": "加到購物車次數",
+      "key": "CART_COUNT",
+      "type": "number",
+      "unit": "int",
+      "isFunction": false,
+      "isMetric": true,
+      "function": null
+    },
+    {
+      "fileStr": "每次加到購物車的成本",
+      "label": "每次加到購物車的成本",
+      "key": "COST_PER_CART",
+      "type": "number",
+      "unit": "TWD",
+      "isFunction": true,
+      "isMetric": true,
+      "function": {
+        "args": [
+          "CART_COUNT",
+          "TOTAL_COST"
+        ],
+        "return": "(TOTAL_COST / CART_COUNT)"
+      }
+    },
+    {
+      "fileStr": "購物車CVR",
+      "label": "購物車CVR",
+      "key": "CART_CVR",
+      "type": "number",
+      "unit": "percent",
+      "isFunction": true,
+      "isMetric": true,
+      "function": {
+        "args": [
+          "CART_COUNT",
+          "IMPRESSION"
+        ],
+        "return": "((CART_COUNT / IMPRESSION) * 100)"
+      }
+    },
+    {
+      "fileStr": "購買次數",
+      "label": "購買次數",
+      "key": "BUY_COUNT",
+      "type": "number",
+      "unit": "int",
+      "isFunction": false,
+      "isMetric": true,
+      "function": null
+    },
+    {
+      "fileStr": "每次購買的成本 (TWD)",
+      "label": "每次購買的成本",
+      "key": "COST_PER_BUY",
+      "type": "number",
+      "unit": "TWD",
+      "isFunction": true,
+      "isMetric": true,
+      "function": {
+        "args": [
+          "TOTAL_COST",
+          "BUY_COUNT"
+        ],
+        "return": "(TOTAL_COST / BUY_COUNT)"
+      }
+    },
+    {
+      "fileStr": "購買CVR",
+      "label": "購買CVR",
+      "key": "BUY_CVR",
+      "type": "number",
+      "unit": "percent",
+      "isFunction": true,
+      "isMetric": true,
+      "function": {
+        "args": [
+          "BUY_COUNT",
+          "IMPRESSION"
+        ],
+        "return": "((BUY_COUNT / IMPRESSION) * 100)"
+      }
+    },
+    {
+      "fileStr": "購買 ROAS（廣告投資報酬率）",
+      "label": "購買 ROAS",
+      "key": "ROAS",
+      "type": "number",
+      "unit": "percent",
+      "isFunction": true,
+      "isMetric": true,
+      "function": {
+        "args": [
+          "BUY_COUNT",
+          "TOTAL_COST",
+          "ROAS"
+        ],
+        "return": "(ROAS / 100) * TOTAL_COST"
+      }
+    }
+  ]
+}
